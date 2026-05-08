@@ -69,8 +69,8 @@ export const bulkDelete = async (req: AuthRequest, res: Response): Promise<void>
 
 export const uploadProfileImage = async (req: AuthRequest, res: Response): Promise<void> => {
   if (!req.file) { res.status(400).json({ message: 'No file uploaded' }); return; }
-  const imageUrl = `/uploads/${req.file.filename}`;
-  const employee = await Employee.findByIdAndUpdate(req.params.id, { profileImage: imageUrl }, { new: true });
+  const base64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+  const employee = await Employee.findByIdAndUpdate(req.params.id, { profileImage: base64 }, { new: true });
   if (!employee) { res.status(404).json({ message: 'Employee not found' }); return; }
-  res.json({ profileImage: imageUrl });
+  res.json({ profileImage: base64 });
 };

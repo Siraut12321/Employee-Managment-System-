@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import path from 'path';
 import connectDB from './config/db';
 import authRoutes from './routes/auth';
 import employeeRoutes from './routes/employee';
@@ -19,7 +18,6 @@ const allowedOrigins = [
 
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Connect to DB before each request (cached after first connection)
 app.use(async (req, res, next) => {
