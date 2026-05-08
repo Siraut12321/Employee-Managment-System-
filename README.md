@@ -1,5 +1,7 @@
 # 🏢 Employee Management System
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000&logo=vercel)](https://employee-managment-system-tca9.vercel.app/login)
+
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Siraut12321%2FEmployee--Managment--System-blue?logo=github)](https://github.com/Siraut12321/Employee-Managment-System-.git)
 
 A full-stack **Admin Dashboard** for managing employees, departments, and salaries — built with the **MERN** stack (MongoDB, Express, React/Next.js, Node.js) and TypeScript.
