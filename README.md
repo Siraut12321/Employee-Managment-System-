@@ -166,6 +166,36 @@ Password: admin123
 
 ---
 
+## 🚀 Deploying to Vercel
+
+The **frontend** deploys directly to Vercel. The **backend** must be hosted separately (e.g. [Render](https://render.com), [Railway](https://railway.app)).
+
+### Frontend (Vercel)
+1. Import the repo on [vercel.com](https://vercel.com)
+2. Set **Root Directory** to `frontend`
+3. Add environment variable:
+   ```
+   NEXT_PUBLIC_API_URL=https://your-backend-url.com/api
+   ```
+4. Deploy ✅
+
+### Backend (Render / Railway)
+1. Set **Root Directory** to `backend`
+2. Build command: `npm run build`
+3. Start command: `npm start`
+4. Add environment variables:
+   ```
+   PORT=5000
+   MONGODB_URI=your_mongodb_atlas_uri
+   JWT_SECRET=your_strong_secret
+   NODE_ENV=production
+   CLIENT_URL=https://your-vercel-app.vercel.app
+   ```
+
+> ⚠️ Make sure `CLIENT_URL` on the backend matches your Vercel frontend URL exactly (no trailing slash).
+
+---
+
 ## 🤝 Contributing
 
 1. Fork the repository
