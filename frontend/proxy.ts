@@ -6,7 +6,12 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isAuthPage = pathname === '/login';
+  const isRoot = pathname === '/';
   const isDashboard = pathname.startsWith('/dashboard');
+
+  if (isRoot) {
+    return NextResponse.redirect(new URL(token ? '/dashboard' : '/login', request.url));
+  }
 
   if (isDashboard && !token) {
     return NextResponse.redirect(new URL('/login', request.url));
@@ -20,5 +25,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login'],
+  matcher: ['/', '/dashboard', '/dashboard/:path*', '/login'],
 };

@@ -24,11 +24,12 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401 && typeof window !== 'undefined') {
       const isLoginRequest = error.config?.url?.includes('/auth/login');
-      if (!isLoginRequest) {
+      const isAlreadyOnLogin = window.location.pathname === '/login';
+      if (!isLoginRequest && !isAlreadyOnLogin) {
         localStorage.removeItem('auth-storage');
-        document.cookie = 'token=; path=/; max-age=0';
-        window.location.href = '/login';
-        return new Promise(() => {}); // suppress unhandledRejection after redirect
+        document.cookie = 'token=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        window.location.replace('/login');
+        return new Promise(() => {});
       }
     }
     return Promise.reject(error);

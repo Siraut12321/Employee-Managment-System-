@@ -25,7 +25,8 @@ export default function DashboardPage() {
     fetchDashboardStats();
     fetchAnalytics(new Date().getFullYear());
     fetchDepartments();
-  }, [fetchDashboardStats, fetchAnalytics, fetchDepartments]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const stats = [
     {

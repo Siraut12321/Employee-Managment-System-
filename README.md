@@ -1,5 +1,7 @@
 # 🏢 Employee Management System
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Siraut12321%2FEmployee--Managment--System-blue?logo=github)](https://github.com/Siraut12321/Employee-Managment-System-.git)
+
 A full-stack **Admin Dashboard** for managing employees, departments, and salaries — built with the **MERN** stack (MongoDB, Express, React/Next.js, Node.js) and TypeScript.
 
 ---
