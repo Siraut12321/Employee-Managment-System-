@@ -14,9 +14,22 @@ const app = express();
 const allowedOrigins = [
   process.env.CLIENT_URL,
   'http://localhost:3000',
+  'https://employee-managment-system-tca9.vercel.app',
+  'https://employee-managment-system-git-develop-tca9s-projects.vercel.app',
 ].filter(Boolean) as string[];
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 // Connect to DB before each request (cached after first connection)

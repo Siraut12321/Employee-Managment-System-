@@ -29,7 +29,6 @@ apiClient.interceptors.response.use(
         localStorage.removeItem('auth-storage');
         document.cookie = 'token=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
         window.location.replace('/login');
-        return new Promise(() => {});
       }
     }
     return Promise.reject(error);
